@@ -1,0 +1,28 @@
+/*
+    Control
+*/
+
+.container .control{
+    position: relative;
+
+    label{
+        position: absolute;
+        font-size: 16px;
+
+    } 
+    
+    input, textarea {
+        font-size: 16px;
+        color: coral;
+        &:focus ~ label,
+        &:valid ~ label {
+            top:-20px;
+            color:aqua;
+        }
+    }
+
+    textarea{
+        max-width: 100%;
+        max-height: 200px;
+    }
+}

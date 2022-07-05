@@ -4,14 +4,18 @@ import { FormToJson } from './Forms/FormToJson';
 import { FormSyncControl } from './FormsSyncOutput/FormSyncControl';
 import './App.css';
 import { StyledButton } from './styled-components/StyledButton';
+import {SupportForm} from './SupportForm/SupportForm';
+import { NiceControl } from './Stilization controls/NiceControl';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       {/*<HidenComponent></HidenComponent>
       <FormToJson></FormToJson>
-      <FormSyncControl/>*/}
       <StyledButton/>
+      <FormSyncControl/>
+      <SupportForm/>*/}
+      <NiceControl></NiceControl>
     </div>
   );
 }

@@ -1,8 +1,10 @@
+//FormToJson.css
 import React from "react";
+import styles from "./FormToJson.module.css"
 
 export class FormToJson extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
 
     this.state = { 
         field1: 'Shylin',
@@ -40,11 +42,14 @@ export class FormToJson extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleOnSubmit}>
+      <form 
+        className={styles.wrapper}
+        onSubmit={this.handleOnSubmit}>
         <p>
           <label>
             Field 1:
-            <input
+            <input 
+              className={styles.input}
               name="field1"
               value={this.state.field1}
               onChange={this.handleTextChanged}
@@ -55,6 +60,7 @@ export class FormToJson extends React.Component {
           <label>
             Field 2:
             <input
+              className={styles.input}
               name="field2"
               value={this.state.field2}
               onChange={this.handleTextChanged}
@@ -65,6 +71,7 @@ export class FormToJson extends React.Component {
           <label>
             Field 3:
             <input
+              className={styles.input}
               name="field3"
               value={this.state.field3}
               onChange={this.handleTextChanged}
@@ -72,7 +79,11 @@ export class FormToJson extends React.Component {
           </label>
         </p>
         <p>
-            <textarea value={this.state.json} rows="10" cols="33"></textarea>
+            <textarea 
+              className={styles.textarea}
+              value={this.state.json} 
+              rows="10" 
+              cols="33"></textarea>
         </p>
         <input type="submit" value="Отправить" />
       </form>

@@ -1,0 +1,37 @@
+/*
+    Control
+*/
+
+.control{
+    position: relative;
+    background-color: aquamarine;
+
+    h2{
+        color: red;
+    }
+
+    label{
+        font-size: 16;
+        color:coral;
+    }
+
+    input, textarea {
+        font-size: 25px;
+        color: blue;
+    }
+
+    textarea{
+        background-color: brown;
+        max-width: 100%;
+        max-height: 200px;
+    }
+
+    button{
+        background: transparent;
+        border-radius: 5px;
+        border: 7px solid palevioletred;
+        color: palevioletred;
+        margin: 0 1em;
+        padding: 0.5em 10em;      
+    }
+}

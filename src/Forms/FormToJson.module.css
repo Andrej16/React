@@ -1,0 +1,17 @@
+.wrapper {
+    background-color: bisque;
+    margin: 20px;
+}
+
+.input {
+    background-color: blue;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.textarea {
+    background-color: rgb(221, 210, 86);
+    display: block;
+    padding: 10;
+    border: 1px solid 000; 
+}
