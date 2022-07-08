@@ -13,8 +13,8 @@ export const Button = props => {
     </span>
   );
 
-  return(
-    <button 
+  return (
+    <button
       type={type}
       className={
         clsx(
@@ -26,7 +26,7 @@ export const Button = props => {
             },
             className
           ]
-        ) 
+        )
       }
       {...rest}
     >
