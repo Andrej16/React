@@ -15,8 +15,8 @@ export class ListItem extends React.Component {
   render () {
     return(
       <li className={styles.listItem}>
-        <div className={styles.listItemValueWrapper}>{this.props.item.value}</div>
-        <Button size="small" onClick={this.onClickClose} iconType={IconTypes.cross} />
+         <div className={styles.listItemValueWrapper}>{this.props.item.value}</div>
+         <Button size="small" onClick={this.onClickClose} iconType={IconTypes.cross} />
       </li>
     );
   }
