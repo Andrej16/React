@@ -13,10 +13,31 @@ import { Button } from './components/Button';
 import { ToDoButton } from './components/ToDoButton';
 import { MarkList } from './components/MarkList';
 import { ToDoControl } from './components/ToDoControl';
-
+import ReactDOM from "react-dom/client";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet
+} from "react-router-dom";
+  
 function App() {
    return (
-      <div className="App">
+      <div>
+         <h1>Bookkeeper!</h1>
+         <nav
+            style={{
+               borderBottom: "solid 1px",
+               paddingBottom: "1rem",
+            }}
+            >
+            <Link to="/invoices">Invoices</Link> |{" "}
+            <Link to="/expenses">Expenses</Link>
+         </nav>
+         <Outlet />
+      </div>
+      /*<div className="App">
          <header className="App-header">
             {/*<HidenComponent></HidenComponent>
                <FormToJson></FormToJson>
@@ -34,12 +55,26 @@ function App() {
                <MarkList />
                <ToDoButton size="large" iconType={IconTypes.cross} onClickCross={(name) => console.log(name)}>cross</ToDoButton>
                <ToDoButton size="large" iconType={IconTypes.checkmark} onClickCheckmark={(name) => console.log(name)}>checkmark</ToDoButton>
-               <ToDoButton size="large" iconType={IconTypes.plus}>Plus</ToDoButton>*/}
-
-               <ToDoControl />
+               <ToDoButton size="large" iconType={IconTypes.plus}>Plus</ToDoButton>}
          </header>
-      </div>
+      </div>*/
    );
 }
+
+function Home() {
+   return <h2>Home</h2>;
+ }
+
+ function Application() {
+   return <h2>Application</h2>;
+ }
+
+ function About() {
+   return <h2>About</h2>;
+ }
+ 
+ function Users() {
+   return <h2>Users</h2>;
+ }
 
 export default App;
