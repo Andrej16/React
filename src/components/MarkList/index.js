@@ -20,11 +20,12 @@ export class MarkList extends React.Component {
   }
 
   render() {
-    return (
-      <div className={styles.container}>
-        <Header addItem={this.addItem} />
-        <List items={this.state.marks} removeItem={this.removeItem} />
-      </div>
-    );
-  }
+      throw new Error('I crashed!');
+      return (
+         <div className={styles.container}>
+            <Header addItem={this.addItem} />
+            <List items={this.state.marks} removeItem={this.removeItem} />
+         </div>
+      );
+   }
 }

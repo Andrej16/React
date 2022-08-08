@@ -10,42 +10,19 @@ import {
    Routes,
    Route,
  } from "react-router-dom";
-import Expenses from './components/Routes/expenses';
-import Invoices from './components/Routes/invoices';
-import Invoice from './components/Routes/invoice';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-         <Routes>
-            <Route path="/" element={<App />}>
-               <Route path="expenses" element={<Expenses />} />
-               <Route path="invoices" element={<Invoices />}>
-                  <Route
-                     index
-                     element={
-                        <main style={{ padding: "1rem" }}>
-                           <p>Select an invoice</p>
-                        </main>
-                     }
-                  />
-                  <Route path=":invoiceId" element={<Invoice />} />
-               </Route>
-               <Route
-                  path="*"
-                  element={
-                  <main style={{ padding: "1rem" }}>
-                     <p>There's nothing here!</p>
-                  </main>
-                  }
-               />
-            </Route>
-         </Routes>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
+   <React.StrictMode>
+      <Provider store={store}>
+         <BrowserRouter>
+            <ErrorBoundary>
+               <App />
+            </ErrorBoundary>
+         </BrowserRouter>
+      </Provider>
+   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
