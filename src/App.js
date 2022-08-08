@@ -14,6 +14,10 @@ import { ToDoButton } from './components/ToDoButton';
 import { MarkList } from './components/MarkList';
 import { ToDoControl } from './components/ToDoControl';
 import ReactDOM from "react-dom/client";
+import Expenses from './components/Routes/expenses';
+import Invoices from './components/Routes/invoices';
+import Invoice from './components/Routes/invoice';
+import { Menu } from './components/Menu';
 import {
   BrowserRouter,
   Routes,
@@ -24,20 +28,8 @@ import {
   
 function App() {
    return (
-      <div>
-         <h1>Bookkeeper!</h1>
-         <nav
-            style={{
-               borderBottom: "solid 1px",
-               paddingBottom: "1rem",
-            }}
-            >
-            <Link to="/invoices">Invoices</Link> |{" "}
-            <Link to="/expenses">Expenses</Link>
-         </nav>
-         <Outlet />
-      </div>
-      /*<div className="App">
+      <div className="App">
+         <Menu/>
          <header className="App-header">
             {/*<HidenComponent></HidenComponent>
                <FormToJson></FormToJson>
@@ -55,26 +47,33 @@ function App() {
                <MarkList />
                <ToDoButton size="large" iconType={IconTypes.cross} onClickCross={(name) => console.log(name)}>cross</ToDoButton>
                <ToDoButton size="large" iconType={IconTypes.checkmark} onClickCheckmark={(name) => console.log(name)}>checkmark</ToDoButton>
-               <ToDoButton size="large" iconType={IconTypes.plus}>Plus</ToDoButton>}
+               <ToDoButton size="large" iconType={IconTypes.plus}>Plus</ToDoButton>*/}
+               <Routes>
+                  <Route path="expenses" element={<Expenses />} />
+                  <Route path="invoices" element={<Invoices />}>
+                     <Route
+                        index
+                        element={
+                           <main style={{ padding: "1rem" }}>
+                              <p>Select an invoice</p>
+                           </main>
+                        }
+                     />
+                     <Route path=":invoiceId" element={<Invoice />} />
+                  </Route>
+                  <Route path="marklist" element={<MarkList/>}></Route>
+                  <Route
+                     path="*"
+                     element={
+                     <main style={{ padding: "1rem" }}>
+                        <p>There's nothing here!</p>
+                     </main>
+                     }
+                  />
+               </Routes>
          </header>
-      </div>*/
+      </div>
    );
 }
-
-function Home() {
-   return <h2>Home</h2>;
- }
-
- function Application() {
-   return <h2>Application</h2>;
- }
-
- function About() {
-   return <h2>About</h2>;
- }
- 
- function Users() {
-   return <h2>Users</h2>;
- }
 
 export default App;
