@@ -6,7 +6,7 @@ export const Control = props => {
     const {name, inputType, onChange, labelText, className, ...rest } = props;
     let input = null;
 
-    if(inputType === 'input'){
+    if(inputType === 'textarea'){
         input = <input name={name} onChange={onChange} {...rest}/>
     } else {
         input = <textarea name={name} onChange={onChange} {...rest}/>

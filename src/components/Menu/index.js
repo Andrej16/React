@@ -16,7 +16,8 @@ export const Menu = () => {
             >
             <Link to="/invoices">Invoices</Link> |{" "}
             <Link to="/expenses">Expenses</Link> |{" "}
-            <Link to="/marklist">Mark List</Link>
+            <Link to="/marklist">Mark List</Link> |{" "}
+            <Link to="/home">Home</Link> 
          </nav>
          <Outlet />
       </div>

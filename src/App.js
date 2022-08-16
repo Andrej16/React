@@ -1,11 +1,11 @@
 import React from 'react';
-import { HidenComponent } from './HidenComponent/HidenComponent';
-import { FormToJson } from './Forms/FormToJson';
-import { FormSyncControl } from './FormsSyncOutput/FormSyncControl';
+import { HidenComponent } from './components/HidenComponent/HidenComponent';
+import { FormToJson } from './components/Forms/FormToJson';
+import { FormSyncControl } from './components/FormsSyncOutput/FormSyncControl';
 import './App.css';
-import { StyledButton } from './styled-components/StyledButton';
-import { SupportForm } from './SupportForm/SupportForm';
-import { NiceControl } from './Stilization controls/NiceControl';
+import { StyledButton } from './components/styled-components/StyledButton';
+import { SupportForm } from './components/SupportForm/SupportForm';
+import { NiceControl } from './components/Stilization controls/NiceControl';
 import { Icon } from './components/Icon';
 import { ToDoIcon } from './components/ToDoIcon';
 import { IconTypes } from './constants/icons';
@@ -19,19 +19,23 @@ import Invoices from './components/Routes/invoices';
 import Invoice from './components/Routes/invoice';
 import { Menu } from './components/Menu';
 import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  Outlet
+   BrowserRouter,
+   Routes,
+   Route,
+   Link,
+   Outlet
 } from "react-router-dom";
-  
+import { ModalProvider } from './context/modal';
+import { Home } from './pages/Home';
+import { ModalRoot } from './components/Modal';
+
 function App() {
    return (
       <div className="App">
-         <Menu/>
-         <header className="App-header">
-            {/*<HidenComponent></HidenComponent>
+         <ModalProvider>
+            <Menu />
+            <header className="App-header">
+               {/*<HidenComponent></HidenComponent>
                <FormToJson></FormToJson>
                <StyledButton/>
                <FormSyncControl/>
@@ -49,6 +53,7 @@ function App() {
                <ToDoButton size="large" iconType={IconTypes.checkmark} onClickCheckmark={(name) => console.log(name)}>checkmark</ToDoButton>
                <ToDoButton size="large" iconType={IconTypes.plus}>Plus</ToDoButton>*/}
                <Routes>
+                  <Route path="home" element={<Home />} />
                   <Route path="expenses" element={<Expenses />} />
                   <Route path="invoices" element={<Invoices />}>
                      <Route
@@ -61,17 +66,19 @@ function App() {
                      />
                      <Route path=":invoiceId" element={<Invoice />} />
                   </Route>
-                  <Route path="marklist" element={<MarkList/>}></Route>
+                  <Route path="marklist" element={<MarkList />}></Route>
                   <Route
                      path="*"
                      element={
-                     <main style={{ padding: "1rem" }}>
-                        <p>There's nothing here!</p>
-                     </main>
+                        <main style={{ padding: "1rem" }}>
+                           <p>There's nothing here!</p>
+                        </main>
                      }
                   />
                </Routes>
-         </header>
+            </header>
+            <ModalRoot />
+         </ModalProvider>
       </div>
    );
 }

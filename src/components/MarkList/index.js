@@ -20,7 +20,6 @@ export class MarkList extends React.Component {
   }
 
   render() {
-      throw new Error('I crashed!');
       return (
          <div className={styles.container}>
             <Header addItem={this.addItem} />
