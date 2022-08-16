@@ -1,10 +1,12 @@
 import React from 'react';
-import { ModalConsumer } from '../../context/modal';
+import { ModalContext } from '../../context/modal';
 
 export const ModalRoot = () => (
-  <ModalConsumer>
+  <ModalContext.Consumer>
     {({ component: Component, props, hideModal }) =>
-      Component ? <Component {...props} onRequestClose={hideModal} /> : null
+      Component ? 
+      <Component {...props} onRequestClose={hideModal} /> : 
+      null
     }
-  </ModalConsumer>
+  </ModalContext.Consumer>
 );

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { ModalConsumer } from '../context/modal';
+import { ModalContext } from '../context/modal';
 import { Button } from '../components/Button';
 import { Modal1, Modal2 } from '../components/Modal/index';
 
@@ -9,7 +9,7 @@ export const Home = () => {
    return (
       <div style={style}>
          <div>
-            <ModalConsumer>
+            <ModalContext.Consumer>
                {({ showModal }) => (
                   <Fragment>
                      <Button
@@ -24,7 +24,7 @@ export const Home = () => {
                      </Button>
                   </Fragment>
                )}
-            </ModalConsumer>
+            </ModalContext.Consumer>
          </div>
       </div>
    )
