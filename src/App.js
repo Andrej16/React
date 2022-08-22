@@ -28,14 +28,35 @@ import {
 import { ModalProvider } from './context/modal';
 import { Home } from './pages/Home';
 import { ModalRoot } from './components/Modal';
+import { themes } from './constants/themes';
+import { ThemeContext } from './context/theme';
 
-function App() {
-   return (
-      <div className="App">
-         <ModalProvider>
-            <Menu />
-            <header className="App-header">
-               {/*<HidenComponent></HidenComponent>
+class App extends React.Component {
+   constructor(props) {
+      super(props);
+
+      this.toggleTheme = () => {
+         this.setState(state => ({
+            theme:
+               state.theme === themes.dark
+                  ? themes.light
+                  : themes.dark,
+         }));
+      };
+
+      this.state = {
+         theme: themes.light,
+         toggleTheme: this.toggleTheme
+      };
+   }
+
+   render() {
+      return (
+         <div className="App">
+            <ModalProvider>
+               <Menu />
+               <header className="App-header">
+                  {/*<HidenComponent></HidenComponent>
                <FormToJson></FormToJson>
                <StyledButton/>
                <FormSyncControl/>
@@ -52,35 +73,38 @@ function App() {
                <ToDoButton size="large" iconType={IconTypes.cross} onClickCross={(name) => console.log(name)}>cross</ToDoButton>
                <ToDoButton size="large" iconType={IconTypes.checkmark} onClickCheckmark={(name) => console.log(name)}>checkmark</ToDoButton>
                <ToDoButton size="large" iconType={IconTypes.plus}>Plus</ToDoButton>*/}
-               <Routes>
-                  <Route path="home" element={<Home />} />
-                  <Route path="expenses" element={<Expenses />} />
-                  <Route path="invoices" element={<Invoices />}>
-                     <Route
-                        index
-                        element={
-                           <main style={{ padding: "1rem" }}>
-                              <p>Select an invoice</p>
-                           </main>
-                        }
-                     />
-                     <Route path=":invoiceId" element={<Invoice />} />
-                  </Route>
-                  <Route path="marklist" element={<MarkList />}></Route>
-                  <Route
-                     path="*"
-                     element={
-                        <main style={{ padding: "1rem" }}>
-                           <p>There's nothing here!</p>
-                        </main>
-                     }
-                  />
-               </Routes>
-            </header>
-            <ModalRoot />
-         </ModalProvider>
-      </div>
-   );
+                  <ThemeContext.Provider value={this.state}>
+                     <Routes>
+                        <Route path="home" element={<Home />} />
+                        <Route path="expenses" element={<Expenses />} />
+                        <Route path="invoices" element={<Invoices />}>
+                           <Route
+                              index
+                              element={
+                                 <main style={{ padding: "1rem" }}>
+                                    <p>Select an invoice</p>
+                                 </main>
+                              }
+                           />
+                           <Route path=":invoiceId" element={<Invoice />} />
+                        </Route>
+                        <Route path="marklist" element={<MarkList />}></Route>
+                        <Route
+                           path="*"
+                           element={
+                              <main style={{ padding: "1rem" }}>
+                                 <p>There's nothing here!</p>
+                              </main>
+                           }
+                        />
+                     </Routes>
+                  </ThemeContext.Provider>
+               </header>
+               <ModalRoot />
+            </ModalProvider>
+         </div>
+      );
+   }
 }
 
 export default App;

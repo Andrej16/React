@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Header } from './Header';
 import { List } from './List';
 import styles from './MarkList.module.scss';
+import { ThemeContext } from '../../context/theme';
 
 export class MarkList extends React.Component {
   constructor (props) {
     super(props);
     this.state = { marks: [] };
   }
+
+  static contextType = ThemeContext;
 
   addItem = mark => {
     const newList = [mark, ...this.state.marks];
@@ -20,11 +23,15 @@ export class MarkList extends React.Component {
   }
 
   render() {
+      let theme = this.context.theme;
       return (
-         <div className={styles.container}>
-            <Header addItem={this.addItem} />
-            <List items={this.state.marks} removeItem={this.removeItem} />
-         </div>
+         <Fragment>
+            <h2 style={{backgroundColor: theme.background}}>Mark list context</h2>
+            <div className={styles.container}>
+               <Header addItem={this.addItem} />
+               <List items={this.state.marks} removeItem={this.removeItem} />
+            </div>
+         </Fragment>
       );
    }
 }
