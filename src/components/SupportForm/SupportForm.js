@@ -47,7 +47,7 @@ export class SupportForm extends React.Component {
             className={styles.control}
             inputType="textarea"
             labelText="Comment"
-            //name="comment"
+            name="comment"
             onChange={this.handleInputChange}
             required
           ></Control>
